@@ -33,32 +33,46 @@
           Digite abaixo os seus comentários:
         </h3>
         <div class="form-group">
-          <label for="titulo" class="text-monospace"> Titulo: </label>
+          <label for="nome" class="text-monospace"> Nome: </label>
           <input
             type="text"
-            id="titulo"
+            name="nome"
+            id="nome"
             class="form-control"
-            placeholder="Digite o titulo da postagem"
+            placeholder="Digite o seu nome"
+            [(ngModel)]='post.nome'
           />
         </div>
         <div class="form-group mt-4">
-          <label for="titulo" class="text-monospace">Texto: </label>
+          <label for="texto" class="text-monospace"> Mensagem: </label>
           <textarea
-            name=""
-            id=""
+            name="texto"
+            id="mensagem"
             cols="30"
             rows="5"
             class="form-control"
+            [(ngModel)]='post.mensagem'
           ></textarea>
         </div>
         <div class="d-flex mt-2 justify-content-end">
-          <button type="button" class="btn btn-outline-info w-25">
+          <button type="button" class="btn btn-outline-info w-25" (click)='cadastrarPost()'>
             Publicar
           </button>
         </div>
       </div>
       <hr class="mt-5 mb-5" />
       <h3 class="text-center mb-4 text-monospace">Todos os comentários:</h3>
+      <div class="container">
+        <div class="card mb-4" *ngFor="let post of listPost">
+          <div class="card-header">
+            <h5 class="card-title">{{ post.id }}</h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{ post.nome }}</p>
+            <p class="card-text">{{ post.mensagem }}</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
